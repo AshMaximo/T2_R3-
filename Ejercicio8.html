@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Aleatoria</title>
+    <script>
+        function mostrarImagenAleatoria() {
+            // Lista de rutas de las imágenes
+            const imagenes = [
+                "Anivia y Senna embrujadas.jpeg", // Reemplaza con la ruta de tu primera imagen
+                "Annie Noche de sustos_1609349080_1036278_1024x576.jpg", // Reemplaza con la ruta de tu segunda imagen
+                "Annie-Frankentibbers_1293780630_290777_1024x604.jpg"  // Reemplaza con la ruta de tu tercera imagen
+            ];
+
+            // Selecciona una imagen aleatoria
+            const indiceAleatorio = Math.floor(Math.random() * imagenes.length);
+            const imagenSeleccionada = imagenes[indiceAleatorio];
+
+            // Muestra la imagen en el elemento img
+            document.getElementById("imagenAleatoria").src = imagenSeleccionada;
+        }
+    </script>
+</head>
+<body onload="mostrarImagenAleatoria()">
+
+    <h1>Imagen Aleatoria al Acceder</h1>
+    <img id="imagenAleatoria" alt="Imagen aleatoria" width="500" height="300">
+
+</body>
+</html>

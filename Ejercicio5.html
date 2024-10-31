@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ecuaciones de Segundo Grado</title>
+    <script>
+        function resolverEcuacion() {
+            // Obtiene los valores de los coeficientes
+            const a = parseFloat(document.getElementById("coeficienteA").value);
+            const b = parseFloat(document.getElementById("coeficienteB").value);
+            const c = parseFloat(document.getElementById("coeficienteC").value);
+
+            // Verifica que los valores sean válidos
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                alert("Por favor, ingresa valores numéricos válidos para los coeficientes.");
+                return;
+            }
+
+            if (a === 0) {
+                alert("El coeficiente 'a' no puede ser 0 en una ecuación de segundo grado.");
+                return;
+            }
+
+            // Calcula el discriminante
+            const discriminante = Math.pow(b, 2) - 4 * a * c;
+            let mensajeResultado;
+
+            if (discriminante > 0) {
+                // Dos soluciones reales
+                const x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+                const x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+                mensajeResultado = `Las soluciones son: x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`;
+            } else if (discriminante === 0) {
+                // Una solución real
+                const x = -b / (2 * a);
+                mensajeResultado = `La solución es: x = ${x.toFixed(2)}`;
+            } else {
+                // No hay soluciones reales (soluciones complejas)
+                const parteReal = (-b / (2 * a)).toFixed(2);
+                const parteImaginaria = (Math.sqrt(-discriminante) / (2 * a)).toFixed(2);
+                mensajeResultado = `Las soluciones complejas son: x1 = ${parteReal} + ${parteImaginaria}i, x2 = ${parteReal} - ${parteImaginaria}i`;
+            }
+
+            // Muestra el resultado
+            document.getElementById("resultado").innerText = mensajeResultado;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Calculadora de Ecuaciones de Segundo Grado</h1>
+
+    <label for="coeficienteA">Coeficiente a:</label>
+    <input type="number" id="coeficienteA" required>
+    <br>
+    <label for="coeficienteB">Coeficiente b:</label>
+    <input type="number" id="coeficienteB" required>
+    <br>
+    <label for="coeficienteC">Coeficiente c:</label>
+    <input type="number" id="coeficienteC" required>
+    <br>
+    <button onclick="resolverEcuacion()">Resolver Ecuación</button>
+
+    <h2>Resultado</h2>
+    <p id="resultado"></p>
+
+</body>
+</html>

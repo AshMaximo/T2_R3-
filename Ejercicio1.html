@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Aleatorios</title>
+    <script>
+        // Genera un número aleatorio entre 0 y 1
+        function randomBetween0And1() {
+            return Math.random();
+        }
+
+        // Genera un número aleatorio entre 100 y 200
+        function randomBetween100And200() {
+            return Math.floor(Math.random() * (200 - 100 + 1)) + 100;
+        }
+
+        // Genera un número aleatorio entre dos valores dados por el usuario
+        function randomBetweenUserValues() {
+            const min = parseInt(document.getElementById("minValue").value);
+            const max = parseInt(document.getElementById("maxValue").value);
+            if (isNaN(min) || isNaN(max) || min > max) {
+                alert("Por favor, ingresa valores válidos. El valor mínimo debe ser menor o igual al máximo.");
+                return;
+            }
+            const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById("userRandomNumber").innerText = `Número aleatorio entre ${min} y ${max}: ${randomValue}`;
+        }
+
+        // Muestra los números aleatorios generados
+        function displayRandomNumbers() {
+            document.getElementById("random0To1").innerText = `Número aleatorio entre 0 y 1: ${randomBetween0And1()}`;
+            document.getElementById("random100To200").innerText = `Número aleatorio entre 100 y 200: ${randomBetween100And200()}`;
+        }
+    </script>
+</head>
+<body onload="displayRandomNumbers()">
+
+    <h1>Números Aleatorios</h1>
+
+    <p id="random0To1"></p>
+    <p id="random100To200"></p>
+
+    <h2>Genera un número aleatorio entre dos valores</h2>
+    <label for="minValue">Valor mínimo:</label>
+    <input type="number" id="minValue" required>
+    <br>
+    <label for="maxValue">Valor máximo:</label>
+    <input type="number" id="maxValue" required>
+    <br>
+    <button onclick="randomBetweenUserValues()">Generar</button>
+    <p id="userRandomNumber"></p>
+
+</body>
+</html>

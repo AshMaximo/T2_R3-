@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Hipotenusa</title>
+    <script>
+        function calcularHipotenusa() {
+            const catetoA = parseFloat(document.getElementById("catetoA").value);
+            const catetoB = parseFloat(document.getElementById("catetoB").value);
+
+            if (isNaN(catetoA) || isNaN(catetoB) || catetoA <= 0 || catetoB <= 0) {
+                alert("Por favor, ingresa valores válidos y positivos para los catetos.");
+                return;
+            }
+
+            // Calcula la hipotenusa usando el teorema de Pitágoras
+            const hipotenusa = Math.sqrt(Math.pow(catetoA, 2) + Math.pow(catetoB, 2));
+
+            // Muestra el resultado
+            document.getElementById("resultadoHipotenusa").innerText = `La hipotenusa es: ${hipotenusa.toFixed(2)}`;
+            
+            // Pregunta si el usuario quiere realizar otro cálculo
+            const continuar = confirm("¿Quieres calcular otra hipotenusa?");
+            if (continuar) {
+                // Resetea los valores de los campos de entrada para el próximo cálculo
+                document.getElementById("catetoA").value = "";
+                document.getElementById("catetoB").value = "";
+                document.getElementById("resultadoHipotenusa").innerText = "";
+            } else {
+                alert("Gracias por usar la calculadora de hipotenusa.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Calculadora de Hipotenusa</h1>
+
+    <label for="catetoA">Cateto A:</label>
+    <input type="number" id="catetoA" required>
+    <br>
+    <label for="catetoB">Cateto B:</label>
+    <input type="number" id="catetoB" required>
+    <br>
+    <button onclick="calcularHipotenusa()">Calcular Hipotenusa</button>
+
+    <h2>Resultado</h2>
+    <p id="resultadoHipotenusa"></p>
+
+</body>
+</html>

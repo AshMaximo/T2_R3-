@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Seno, Coseno y Tangente</title>
+    <script>
+        function calcularTrigonometria() {
+            const anguloGrados = parseFloat(document.getElementById("angulo").value);
+            if (isNaN(anguloGrados)) {
+                alert("Por favor, ingresa un ángulo válido.");
+                return;
+            }
+
+            // Convertimos el ángulo a radianes
+            const anguloRadianes = anguloGrados * (Math.PI / 180);
+
+            // Calculamos seno, coseno y tangente
+            const seno = Math.sin(anguloRadianes);
+            const coseno = Math.cos(anguloRadianes);
+            const tangente = Math.tan(anguloRadianes);
+
+            // Mostramos los resultados
+            document.getElementById("resultadoSeno").innerText = `Seno: ${seno.toFixed(4)}`;
+            document.getElementById("resultadoCoseno").innerText = `Coseno: ${coseno.toFixed(4)}`;
+            document.getElementById("resultadoTangente").innerText = `Tangente: ${tangente.toFixed(4)}`;
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Calculadora de Seno, Coseno y Tangente</h1>
+
+    <label for="angulo">Ingresa un ángulo en grados:</label>
+    <input type="number" id="angulo" required>
+    <button onclick="calcularTrigonometria()">Calcular</button>
+
+    <h2>Resultados</h2>
+    <p id="resultadoSeno"></p>
+    <p id="resultadoCoseno"></p>
+    <p id="resultadoTangente"></p>
+
+</body>
+</html>
